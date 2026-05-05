@@ -7,7 +7,7 @@ export class ClaudePlugin implements AiPlugin {
   readonly description = 'Claude AI models by Anthropic'
 
   readonly configSchema: ConfigField[] = [
-    { name: 'apiKey', label: 'API Key', type: 'password', required: true, helpText: 'console.anthropic.com > API Keys. Needs usage permissions.' },
+    { name: 'api_key', label: 'API Key', type: 'password', required: true, helpText: 'console.anthropic.com > API Keys. Needs usage permissions.' },
   ]
 
   readonly models: AiModel[] = [
