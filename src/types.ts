@@ -40,9 +40,12 @@ export interface AiReviewer {
 export interface ConfigField {
   name: string
   label: string
-  type: 'text' | 'password' | 'url'
+  type: 'text' | 'password' | 'url' | 'textarea'
   required: boolean
   placeholder?: string
+  defaultValue?: string
+  helpText?: string
+  advanced?: boolean
 }
 
 /** AI model metadata. */
