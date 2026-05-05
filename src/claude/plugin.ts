@@ -20,6 +20,29 @@ export class ClaudePlugin implements AiPlugin {
     const model = config.model ?? this.models.find((m) => m.default)?.id ?? this.models[0].id
     return new ClaudeReviewer(config.apiKey, model)
   }
+
+  async verifyKey(apiKey: string): Promise<{ valid: boolean; error?: string }> {
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'claude-haiku-4-5-20251001',
+          max_tokens: 1,
+          messages: [{ role: 'user', content: 'hi' }],
+        }),
+      })
+      if (res.ok) return { valid: true }
+      const data = await res.json() as { error?: { message?: string } }
+      return { valid: false, error: data.error?.message ?? `HTTP ${res.status}` }
+    } catch (err) {
+      return { valid: false, error: (err as Error).message }
+    }
+  }
 }
 
 export const claudePlugin = new ClaudePlugin()

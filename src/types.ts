@@ -70,4 +70,7 @@ export interface AiPlugin {
   readonly models: AiModel[]
 
   createReviewer(config: AiPluginConfig): AiReviewer
+
+  /** Verify an API key is valid. Returns { valid, error? }. */
+  verifyKey(apiKey: string): Promise<{ valid: boolean; error?: string }>
 }
