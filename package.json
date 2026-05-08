@@ -11,17 +11,24 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "@anthropic-ai/sdk": ">=0.30.0"
   },
   "peerDependenciesMeta": {
-    "@anthropic-ai/sdk": { "optional": true }
+    "@anthropic-ai/sdk": {
+      "optional": true
+    }
   },
   "dependencies": {
     "pino": "^9.5.0"
@@ -29,7 +36,8 @@
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@types/node": "^22.0.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.4"
   },
   "license": "MIT",
   "publishConfig": {
