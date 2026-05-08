@@ -1,6 +1,6 @@
 {
   "name": "@supaproxy/viper-ai-providers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AI provider plugins for Viper code reviewer",
   "type": "module",
   "main": "dist/index.js",
