@@ -30,7 +30,7 @@ export interface AiDiscussionRequest {
   diffContext: string
 }
 
-/** AI reviewer operations — the contract adapters implement. */
+/** AI reviewer operations: the contract adapters implement. */
 export interface AiReviewer {
   review(request: AiReviewRequest): Promise<AiReviewResult>
   respondToDiscussion(request: AiDiscussionRequest): Promise<string>
@@ -61,7 +61,7 @@ export interface AiPluginConfig {
   model?: string
 }
 
-/** AI Plugin — the contract every AI provider must implement. */
+/** AI Plugin: the contract every AI provider must implement. */
 export interface AiPlugin {
   readonly type: string
   readonly name: string
